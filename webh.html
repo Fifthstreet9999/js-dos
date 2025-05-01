@@ -2,16 +2,29 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Play DOOM</title>
+  <title>DOOM Web</title>
   <script src="https://js-dos.com/6.22/current/js-dos.js"></script>
+  <style>
+    body {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    canvas {
+      border: 3px solid #fff;
+    }
+  </style>
 </head>
 <body>
   <canvas id="jsdos" width="640" height="400"></canvas>
   <script>
     Dos(document.getElementById("jsdos")).ready((fs, main) => {
-      fs.extract("DOOM.wad").then(() => {
-        main(["DOOM.exe", "-iwad", "DOOM.wad"]);
-      });
+      fs.createFile("doom.exe", await fetch("doom.exe").then(res => res.arrayBuffer()));
+      fs.createFile("doom1.wad", await fetch("doom1.wad").then(res => res.arrayBuffer()));
+      main(["doom.exe", "-iwad", "doom1.wad"]);
     });
   </script>
 </body>
