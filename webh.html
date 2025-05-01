@@ -9,8 +9,8 @@
   <canvas id="jsdos" width="640" height="400"></canvas>
   <script>
     Dos(document.getElementById("jsdos")).ready((fs, main) => {
-      fs.extract("doom1.wad").then(() => {
-        main(["doom.exe", "-iwad", "doom1.wad"]);
+      fs.extract("DOOM.wad").then(() => {
+        main(["DOOM.exe", "-iwad", "DOOM.wad"]);
       });
     });
   </script>
